@@ -106,8 +106,8 @@ class Curl {
      * 
      */
     public function getConfig() {
-        if (file_exists(dirname(__FILE__) . '/App/config.ini')) {
-            $this->config = parse_ini_file(dirname(__FILE__) . '/App/config.ini');
+        if (file_exists(dirname(__FILE__) . '/App/config.billagain.ini')) {
+            $this->config = parse_ini_file(dirname(__FILE__) . '/App/config.billagain.ini');
             $this->username = $this->config['username'];
             $this->password = $this->config['password'];
             $this->base_url = $this->config['base_url'];
