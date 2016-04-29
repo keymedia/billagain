@@ -5,8 +5,11 @@
     "type": "library",
     "require": {
         "php": ">=5.6.0",
-        "ext-curl": "*",
-        "phpunit/phpunit": "dev-master"
+        "ext-curl": "*"        
+    },
+    "require-dev": {
+        "phpunit/phpunit": "dev-master",
+        "phpdocumentor/phpdocumentor": "dev-master"
     },
     "autoload": {
         "psr-4": {
