@@ -13,6 +13,7 @@
     },
     "autoload": {
         "psr-4": {
+            "BillAgain\\": "src/BillAgain/",
             "BillAgain\\Components\\": "src/BillAgain/Components/",
             "BillAgain\\Customers\\": "src/BillAgain/Customers/",
             "BillAgain\\Invoices\\": "src/BillAgain/Invoices/",
