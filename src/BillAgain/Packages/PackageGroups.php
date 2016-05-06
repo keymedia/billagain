@@ -1,6 +1,6 @@
 <?php
 
-namespace BillAgain;
+namespace BillAgain\Packages;
 
 use BillAgain\Curl;
 
