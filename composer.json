@@ -13,7 +13,11 @@
     },
     "autoload": {
         "psr-4": {
-            "CodeGroup\\BillAgain\\": "src/BillAgain/"
+            "BillAgain\\Components\\": "src/BillAgain/Components/",
+            "BillAgain\\Customers\\": "src/BillAgain/Customers/",
+            "BillAgain\\Invoices\\": "src/BillAgain/Invoices/",
+            "BillAgain\\Packages\\": "src/BillAgain/Packages/",
+            "BillAgain\\Payments\\": "src/BillAgain/Payments/"
         }
     },
     "license": "MIT",
