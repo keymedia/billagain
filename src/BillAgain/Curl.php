@@ -88,33 +88,12 @@ class Curl {
 
     /*     * *********************** Methods ************************ */
 
-    public function __construct() {
-        $this->getConfig();
-    }
-
     /**
      * Get the current value for variable base_url
      * @return string base_url
      */
     public function getBaseURL() {
         return $this->base_url;
-    }
-
-    /**
-     * Get config file and parses values in array format
-     * @return array config
-     * 
-     */
-    public function getConfig() {
-        if (file_exists(dirname(__FILE__) . '/App/config.billagain.ini')) {
-            $this->config = parse_ini_file(dirname(__FILE__) . '/App/config.billagain.ini');
-            $this->username = $this->config['username'];
-            $this->password = $this->config['password'];
-            $this->base_url = $this->config['base_url'];
-        } else {
-            $this->error = 'Could not locate config.ini file';
-        }
-        return $this;
     }
 
     /**

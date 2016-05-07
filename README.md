@@ -7,12 +7,10 @@ Below you'll find the API documentation
   - [php-documentation] - Php Client Side documentation
 
 ### Version
-1.0.1
+2.0.0
 
 ## Config Setup
- - In the /src/BillAgain/App/ directory you'll find a config.example.ini file.
- - Rename this file to whatever you like
- - In the Curl.php file within the method getConfig() change the filename to the same filename of your .ini file
+ - The config setup options and file has been removed in version 2 as it seemed pointless given there are setters in place to parse the username, password and URL.
   
 ## License
 MIT
