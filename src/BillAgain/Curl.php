@@ -18,7 +18,7 @@ class Curl {
      * This value is set in config.ini
      * @var string base_url
      */
-    protected $base_url;
+    protected $base_url = 'http://api.sandbox.billagain.com/v1';
 
     /**
      * The cURL connect handle
@@ -94,6 +94,15 @@ class Curl {
      */
     public function getBaseURL() {
         return $this->base_url;
+    }
+    
+    /**
+     * Set the value for the base url
+     * @param string base_url
+     */
+    function setBaseURL($base_url = '') {
+        $this->base_url = $base_url;
+        return $this;
     }
 
     /**
@@ -192,7 +201,7 @@ class Curl {
      * Get the current value for variable url
      * @return string url
      */
-    public function getUrl() {
+    public function getURL() {
         return $this->url;
     }
 
@@ -200,7 +209,7 @@ class Curl {
      * Set the value for url
      * @param string url
      */
-    function setUrl($url = '') {
+    function setURL($url = '') {
         $this->url = $url;
         return $this;
     }
