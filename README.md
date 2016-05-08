@@ -16,8 +16,8 @@ Below you'll find the API documentation
 MIT
 
 ## Support
-Email: <support@keymedia.co.za>
+Email: <info@billagain.com>
 
 
 [documentation]: <http://docs.billagain.com/developer>
-[php-documentation]: <http://keymedia.co.za>
+[php-documentation]: <http://billagain.com>
