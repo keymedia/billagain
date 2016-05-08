@@ -7,7 +7,7 @@ namespace BillAgain;
  * 
  * Main class for making cURL requests using Basic Auth headers
  * 
- * @version 1.0.1
+ * @version 2.1.0
  * @license GPL
  * @author Mark Duppa-Whyte <mark@keymedia.co.za>
  * 
