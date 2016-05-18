@@ -1,7 +1,7 @@
 {
     "name": "codegroup/billagain",
     "description": "BillAgain API Client Methods",
-    "keywords": ["billagain", "automated billing", "recurring billing", "automated invoicing", "online billing", "subscription billing", "recurring billing"],
+    "keywords": ["billagain", "automated billing", "recurring billing", "automated invoicing", "online billing", "subscription billing", "Credit Card Payments", "Recurring Debit Orders", "HPP Payments", "Batch Submissions", "Payment Gateway Integration", "Customer Billing Portal"],
     "type": "library",
     "version": "2.1.0" ,
     "require": {
