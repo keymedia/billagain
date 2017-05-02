@@ -56,19 +56,19 @@ class BillAgain {
      * The URL created directly or with the buildURL method
      * @var string $url
      */
-    public $url;
+    private $url;
 
     /**
-     * The page number of the request for pagination - where necessary
+     * The page number of the request for pagination
      * @var string $page
      */
-    public $page;
+    private $page;
 
     /**
-     * The limit or number of items returned (max 200) - where necessary
-     * @var string $limit
+     * The limit or number of items returned (max 200)
+     * @var string $page_size
      */
-    public $limit;
+    private $page_size;
 
     /**
      * This is set when a violation occurs
@@ -84,17 +84,17 @@ class BillAgain {
 
     /**
      * The info returned from last request
-     * @var string response_info
+     * @var string $response_info
      */
-    private $responseInfo;
+    private $response_info;
 
     /**
      * The status code returned from last request
-     * @var integer response_status
+     * @var integer $response_status
      */
-    private $responseStatus;
-    
-    /* ****************** Methods ****************** */
+    private $response_status;
+
+    /*     * ***************** Methods ****************** */
 
     public function __construct($api, $username, $key) {
         $this->api = rtrim($api, '/\\');
@@ -102,48 +102,27 @@ class BillAgain {
         $this->key = $key;
     }
 
-    public function initRequest($type, $data, $url = '') {
-        if ($url != '') {
-            $this->url = $url;
-        }
+    public function initRequest($url, $type, $data) {
+        $this->url = $url;
         $this->type = strtoupper($type);
         $this->data = $data;
-
-        if ($this->username == '' || $this->key == '') {
-            $this->error = 'Username|Key has not been set';
-        }
-
-        if ($this->type == 'PUT' || $this->type == 'POST') {
-            $this->encodeData();
-        }
-
         if ($this->error == '') {
             $this->initCurl();
         }
     }
 
-    public function initRequestBuilder($module, $type, $data, $page = '', $limit = '', $id = '', $action = '') {
+    public function initRequestBuilder($module, $type, $data, $id = '', $action = '', $page = 1, $page_size = 100) {
         $this->module = rtrim($module, '/\\');
-        $this->page = (int) $page;
-        $this->limit = (int) $limit;
-        $this->type = strtoupper($type);
+        $this->id = $id;
         $this->action = rtrim($action, '/\\');
-
-        if ((int) $id != 0) {
-            $this->id = (int) $id;
-        }
-
-        if ($this->username == '' || $this->key == '') {
-            $this->error = 'Username|Key has not been set';
-        }
+        $this->page = $page;
+        $this->page_size = $page_size;
+        $this->type = strtoupper($type);
 
         if ($this->id == '' && $this->action != '') {
             $this->error = 'Cannot have an action without an ID';
         }
-
-        if ($this->type == 'PUT' || $this->type == 'POST') {
-            $this->encodeData($data);
-        }
+        $this->encodeData($data);
 
         if ($this->error == '') {
             $this->buildURL();
@@ -158,24 +137,24 @@ class BillAgain {
             $this->id,
             $this->action
         ];
-        $this->url = rtrim(implode('/', $url), '/\\');
+
+        $this->url = rtrim(implode('/', $url), '/\\') . '?page=' . $this->page . '&page_size=' . $this->page_size;
     }
 
-    /**
-     * Set, prep and json encode the data
-     * @param array data
-     */
-    public function encodeData($data) {
-        if (empty($data)) {
-            $this->error = 'Empty data array';
+    private function encodeData($data) {
+        if ($this->type == 'PUT' || $this->type == 'POST') {
+            if (empty($data) || $data == '') {
+                $this->error = 'Empty data array';
+            }
+            $this->data = json_encode($data);
         }
-        $this->data = json_encode($data);
     }
 
-    /**
-     * Makes the cURL request
-     */
     private function initCurl() {
+
+        if ($this->username == '' || $this->key == '') {
+            $this->error = 'Username|Key has not been set';
+        }
 
         if ($this->error == '') {
             $ch = curl_init();
@@ -185,18 +164,24 @@ class BillAgain {
             curl_setopt($ch, CURLOPT_USERPWD, $this->username . ':' . $this->key);
 
             if ($this->type == 'PUT' || $this->type == 'POST') {
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $this->data);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, encodeData($this->data));
             }
 
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
 
             $this->response = curl_exec($ch);
-            $this->responseInfo = curl_getinfo($ch);
-            $this->responseStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $this->response_info = curl_getinfo($ch);
+            $this->response_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
             curl_close($ch);
         }
+    }
+
+    /* ****************** Getters ****************** */
+    
+    public function getUrl() {
+        return $this->url;
     }
 
     public function getError() {
@@ -208,11 +193,11 @@ class BillAgain {
     }
 
     public function getResponseInfo() {
-        return $this->responseInfo;
+        return $this->response_info;
     }
 
     public function getResponseStatus() {
-        return $this->responseStatus;
+        return $this->response_status;
     }
 
 }
