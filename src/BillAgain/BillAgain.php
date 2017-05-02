@@ -5,7 +5,7 @@ namespace src\BillAgain;
 class BillAgain {
 
     /**
-     * The full API URL
+     * The API URL
      * @var string $api
      */
     private $api;
@@ -23,7 +23,7 @@ class BillAgain {
     private $type;
 
     /**
-     * The query action - where required
+     * The query action
      * @var string $action
      */
     private $action;
@@ -53,7 +53,7 @@ class BillAgain {
     private $id;
 
     /**
-     * The URL created directly or with the buildURL method
+     * The URL string
      * @var string $url
      */
     private $url;
@@ -78,13 +78,13 @@ class BillAgain {
 
     /**
      * The data returned from last request
-     * @var string response_body
+     * @var array $response
      */
     private $response;
 
     /**
      * The info returned from last request
-     * @var string $response_info
+     * @var array $response_info
      */
     private $response_info;
 
