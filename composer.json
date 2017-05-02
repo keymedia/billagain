@@ -3,7 +3,7 @@
     "description": "BillAgain API Client Methods",
     "keywords": ["billagain", "automated billing", "recurring billing", "automated invoicing", "online billing", "subscription billing", "Credit Card Payments", "Recurring Debit Orders", "HPP Payments", "Batch Submissions", "Payment Gateway Integration", "Customer Billing Portal"],
     "type": "library",
-    "version": "2.1.0" ,
+    "version": "3.0.1" ,
     "require": {
         "php": ">=5.6.0",
         "ext-curl": "*"        
@@ -14,12 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "BillAgain\\": "src/BillAgain/",
-            "BillAgain\\Components\\": "src/BillAgain/Components/",
-            "BillAgain\\Customers\\": "src/BillAgain/Customers/",
-            "BillAgain\\Invoices\\": "src/BillAgain/Invoices/",
-            "BillAgain\\Packages\\": "src/BillAgain/Packages/",
-            "BillAgain\\Payments\\": "src/BillAgain/Payments/"
+            "BillAgain\\": "src/BillAgain/"
         }
     },
     "license": "MIT",
