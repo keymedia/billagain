@@ -14,9 +14,6 @@ Below you'll find the API documentation
   - [documentation] - BillAgain API documentation
   - [php-documentation] - Php Client Side documentation
 
-### Version
-2.1.2
-
 ## Config Setup
  - The config setup options and file has been removed in version 2 as it seemed pointless given there are setters in place to parse the username, password and URL.
   
