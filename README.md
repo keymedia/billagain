@@ -15,7 +15,7 @@ Below you'll find the API documentation
   - [php-documentation] - Php Client Side documentation
 
 ### Version
-3.0.0
+3.0.1
 
 ## Backward Compatibility
  - Please note, there is no backward compatibility between v3 and v2. These are completely two different writes of the API
