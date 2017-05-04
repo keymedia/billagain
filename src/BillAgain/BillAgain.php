@@ -1,6 +1,6 @@
 <?php
 
-namespace src\BillAgain;
+namespace BillAgain;
 
 class BillAgain {
 
