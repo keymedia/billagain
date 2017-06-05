@@ -42,9 +42,9 @@ class BillAgain {
 
     /**
      * The data to send to server
-     * @var array $data
+     * @var json string $data
      */
-    private $data = array();
+    private $data;
 
     /**
      * The unique ID for singular queries
@@ -113,6 +113,7 @@ class BillAgain {
 
     public function initRequestBuilder($module, $type, $data, $id = '', $action = '', $page = 1, $page_size = 100) {
         $this->module = rtrim($module, '/\\');
+        $this->data = $data;
         $this->id = $id;
         $this->action = rtrim($action, '/\\');
         $this->page = $page;
@@ -122,7 +123,6 @@ class BillAgain {
         if ($this->id == '' && $this->action != '') {
             $this->error = 'Cannot have an action without an ID';
         }
-        $this->encodeData($data);
 
         if ($this->error == '') {
             $this->buildURL();
@@ -141,15 +141,6 @@ class BillAgain {
         $this->url = rtrim(implode('/', $url), '/\\') . '?page=' . $this->page . '&page_size=' . $this->page_size;
     }
 
-    private function encodeData($data) {
-        if ($this->type == 'PUT' || $this->type == 'POST') {
-            if (empty($data) || $data == '') {
-                $this->error = 'Empty data array';
-            }
-            $this->data = json_encode($data);
-        }
-    }
-
     private function initCurl() {
 
         if ($this->username == '' || $this->key == '') {
@@ -164,7 +155,7 @@ class BillAgain {
             curl_setopt($ch, CURLOPT_USERPWD, $this->username . ':' . $this->key);
 
             if ($this->type == 'PUT' || $this->type == 'POST') {
-                curl_setopt($ch, CURLOPT_POSTFIELDS, encodeData($this->data));
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $this->data);
             }
 
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
