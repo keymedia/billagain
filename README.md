@@ -9,7 +9,6 @@ The system also has an integrated customer portal which can be used by Clients t
 For more information, visit: [website]
 
 [![Build Status](https://travis-ci.org/keymedia/billagain.svg?branch=master)](https://travis-ci.org/keymedia/billagain)
-[![Build Status](https://travis-ci.org/keymedia/billagain.svg?branch=v3)](https://travis-ci.org/keymedia/billagain)
 
 ## Documentation
 Below you'll find the API documentation
