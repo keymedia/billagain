@@ -8,7 +8,7 @@ class BillAgain {
      * The API URL
      * @var string $api
      */
-    private $api;
+    protected $api;
 
     /**
      * The module being requested
@@ -32,13 +32,13 @@ class BillAgain {
      * The username required for authentication
      * @var string $username
      */
-    private $username;
+    protected $username;
 
     /**
      * The API key required for authentication
      * @var string $key
      */
-    private $key;
+    protected $key;
 
     /**
      * The data to send to server
@@ -56,7 +56,7 @@ class BillAgain {
      * The URL string
      * @var string $url
      */
-    private $url;
+    protected $url;
 
     /**
      * The page number of the request for pagination
